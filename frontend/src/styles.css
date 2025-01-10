@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  max-width: 100%;
+  width: auto;
+  height: 20px;
+  color: pink;
+  background-color: pink;
+  z-index: auto;
+  position: relative;
+}
+
