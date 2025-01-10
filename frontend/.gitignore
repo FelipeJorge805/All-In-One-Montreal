@@ -1,6 +1,5 @@
 src.zip
 .editorconfig
-src/
 
 ### Angular / Node ###
 .angular
