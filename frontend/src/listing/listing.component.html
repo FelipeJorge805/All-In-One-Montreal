@@ -1,0 +1,13 @@
+<div class="card-grid">
+    <div class="card" *ngFor="let event of events">
+        <a [href]="event.url" class="card-link">
+            <img src="{{ event.image }}" alt="{{ event.title }}" class="card-img">
+            <div class="card-content">
+                <h3>{{ event.title }}</h3>
+                <p>{{ event.description }}</p>
+                <p><strong>Date:</strong> {{ event.date }}</p>
+                <p><strong>Location:</strong> {{ event.location }}</p>
+            </div>
+        </a>
+    </div>
+</div>
