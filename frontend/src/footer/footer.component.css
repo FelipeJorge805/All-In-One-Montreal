@@ -1,11 +1,33 @@
 #footer{
     background-color: #333;
-    color: white;
-    text-align: center;
     padding: 10px;
     height: 50px;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-logos{
+    text-align: left;
+    width: fit-content;
+}
+
+.footer-logos a{
+    padding: 5px;
+    display: inline-block;
+}
+
+.phone-number{
+    width: fit-content;
+}
+
+.phone-number p{
+    color: white;
+    width: fit-content;
+    text-align: right;
+    margin: 0;
 }
