@@ -12,8 +12,19 @@
 }
 
 #home-title{
-    height: 300px;
+    height: 400px;
     width: 100%;
     text-align: center;
-    background-image: none;
+    background-image: url('https://www.montrealinternational.com/app/uploads/2021/12/bandeau2.jpg');
+    background-size: cover;
+}
+
+#home-title h1{
+    font-size: 50px;
+    color: grey;
+    text-align: center;
+}
+
+#home-title p{
+    color: grey;
 }
