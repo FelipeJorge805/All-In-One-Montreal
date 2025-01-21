@@ -10,6 +10,9 @@ import java.util.List;
 @Service
 public class EventService {
 
+    @Autowired
+    private EventRepo repo;
+
     public EventRepo getRepo() {
         return repo;
     }
@@ -17,9 +20,6 @@ public class EventService {
     public void setRepo(EventRepo repo) {
         this.repo = repo;
     }
-
-    @Autowired
-    private EventRepo repo;
 
     public void addEvent(Event e){
         repo.save(e);
