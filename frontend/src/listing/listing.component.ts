@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { EventService } from '../app/event-service.service';
+import { Event } from '../app/event';
 
 @Component({
   selector: 'app-list',
@@ -11,11 +13,11 @@ import { CommonModule } from '@angular/common';
 export class ListingComponent implements OnInit {
   category!: string;
   validCategories = ['parties', 'sports', 'events', 'festivals'];
-  events: any;
+  events: Event[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private eventService: EventService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     const category = this.route.snapshot.paramMap.get('category')!;
   
     if (!this.validCategories.includes(category)) {
@@ -26,38 +28,10 @@ export class ListingComponent implements OnInit {
   
     this.category = category;
     console.log('Valid category:', this.category);
-    this.fetchData(this.category);
+    
+    this.eventService.findAll().subscribe(data => {
+      this.events = data;
+    });
   }
   
-  fetchData(category: string): void {
-    console.log(`Fetching data for ${category}`);
-
-    //initialize a dummy event with title,description,location and date, and fake image url
-    this.events = [
-      {
-        title: 'Event 1',
-        description: 'Description 1',
-        location: 'Location 1',
-        date: '2021-07-01',
-        image: 'https://via.placeholder.com/150',
-        url: 'https://www.google.com'
-      },
-      {
-        title: 'Event 2',
-        description: 'Description 2',
-        location: 'Location 2',
-        date: '2021-07-02',
-        image: 'https://via.placeholder.com/150',
-        url: 'https://www.google.com'
-      },
-      {
-        title: 'Event 3',
-        description: 'Description 3',
-        location: 'Location 3',
-        date: '2021-07-03',
-        image: 'https://via.placeholder.com/150',
-        url: 'https://www.google.com'
-      }
-    ];
-  }
 }
