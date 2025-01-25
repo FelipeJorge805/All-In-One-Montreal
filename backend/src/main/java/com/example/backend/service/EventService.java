@@ -28,4 +28,12 @@ public class EventService {
     public List<Event> getAll(){
         return repo.findAll();
     }
+
+    public Event getEventById(int id) {
+        return repo.getById(id);
+    }
+
+    public Event getEventByTitle(String title) {
+        return repo.getByTitle(title);
+    }
 }

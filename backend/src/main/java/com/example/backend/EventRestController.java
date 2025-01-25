@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -25,5 +26,17 @@ public class EventRestController {
     @ResponseBody
     public List<Event> getAll(){
         return service.getAll();
+    }
+
+    @GetMapping({"event/{EventId}","Event/{EventId}"})
+    @ResponseBody
+    public Event getEvent(@PathVariable("EventId") int id){
+        return service.getEventById(id);
+    }
+
+    @GetMapping({"event/{Title}","Event/{Title}"})
+    @ResponseBody
+    public Event getEvent(@PathVariable("Title")String title){
+        return service.getEventByTitle(title);
     }
 }

@@ -24,6 +24,16 @@ public class EventRepo {
         this.jdbc = jdbc;
     }
 
+    public List<Event> getEvents(){
+        return events;
+    }
+
+    public void setEvents(List<Event> e){
+        this.events = e;
+    }
+
+    public EventRepo(){}
+
     @Autowired
     public EventRepo(JdbcTemplate jdbc) {
         setJdbc(jdbc);
@@ -52,5 +62,20 @@ public class EventRepo {
                     rs.getString("url")
             )
         );
+    }
+
+    public Event getById(int id) {
+        /*for (Event e : events){
+            System.out.println(e);
+            if(e.getSid() == id) return e;
+        }*/
+        return events.stream().filter(e -> e.getSid()==id).findFirst().orElse(null);
+    }
+
+    public Event getByTitle(String title) {
+        for (Event e : events){
+            if(e.getTitle().equalsIgnoreCase(title)) return e;
+        }
+        return null;
     }
 }
