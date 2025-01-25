@@ -9,7 +9,7 @@ import java.util.Date;
 @Scope("prototype")
 public class Event {
 
-    static int sid = 1;
+    int sid = 1;
     String title;
     String description;
     String location;
@@ -35,6 +35,7 @@ public class Event {
     @Override
     public String toString() {
         return "Event{" +
+                "id='" + sid + '\'' +
                 "name='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", location='" + location + '\'' +
