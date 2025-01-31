@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class EventService {
+public class EventServiceJPA {
 
     @Autowired
-    private EventRepo repo;
+    private EventRepoJPA repo;
 
-    public EventRepo getRepo() {
+    public EventRepoJPA getRepo() {
         return repo;
     }
     @Autowired
-    public void setRepo(EventRepo repo) {
+    public void setRepo(EventRepoJPA repo) {
         this.repo = repo;
     }
 
@@ -31,10 +31,10 @@ public class EventService {
     }
 
     public Event getEventById(int id) {
-        return repo.getById(id);
+        return repo.findById(id).orElse(null);
     }
 
-    public Event getEventByTitle(String title) {
+    /*public Event getEventByTitle(String title) {
         return repo.getByTitle(title);
-    }
+    }*/
 }

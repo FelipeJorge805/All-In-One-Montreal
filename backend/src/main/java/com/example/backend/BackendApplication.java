@@ -2,6 +2,7 @@ package com.example.backend;
 
 import com.example.backend.model.Event;
 import com.example.backend.service.EventService;
+import com.example.backend.service.EventServiceJPA;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -23,7 +24,7 @@ public class BackendApplication {
 
 		System.out.println(e);
 
-		EventService service = context.getBean(EventService.class);
+		EventServiceJPA service = context.getBean(EventServiceJPA.class);
 
 		service.addEvent(e);
 	}
