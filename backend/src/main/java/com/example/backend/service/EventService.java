@@ -2,6 +2,7 @@ package com.example.backend.service;
 
 import com.example.backend.model.Event;
 import com.example.backend.repo.EventRepo;
+import com.example.backend.repo.EventRepoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,17 @@ public class EventService {
 
     @Autowired
     private EventRepo repo;
+    @Autowired
+    private EventRepoJPA repoJPA;
+
+    public EventRepoJPA getRepoJPA() {
+        return repoJPA;
+    }
+
+    @Autowired
+    public void setRepoJPA(EventRepoJPA repoJPA) {
+        this.repoJPA = repoJPA;
+    }
 
     public EventRepo getRepo() {
         return repo;
@@ -22,7 +34,8 @@ public class EventService {
     }
 
     public void addEvent(Event e){
-        repo.save(e);
+        //repo.save(e);
+        repoJPA.save(e);
     }
 
     public List<Event> getAll(){

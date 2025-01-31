@@ -1,5 +1,7 @@
 package com.example.backend.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -7,9 +9,12 @@ import java.util.Date;
 
 @Component
 @Scope("prototype")
+@Entity
 public class Event {
 
-    int sid = 1;
+    @Id
+    private int sid;
+
     String title;
     String description;
     String location;
