@@ -58,7 +58,7 @@ public class EventRepo {
                     rs.getString("title"),
                     rs.getString("description"),
                     rs.getString("location"),
-                    rs.getDate("dt"),
+                    rs.getDate("date"),
                     rs.getString("url")
             )
         );
