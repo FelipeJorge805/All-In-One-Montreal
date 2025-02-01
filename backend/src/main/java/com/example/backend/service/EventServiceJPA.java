@@ -26,6 +26,10 @@ public class EventServiceJPA {
         repo.save(e);
     }
 
+    public void deleteEvent(Event e){
+        repo.delete(e);
+    }
+
     public List<Event> getAll(){
         return repo.findAll();
     }
@@ -34,7 +38,7 @@ public class EventServiceJPA {
         return repo.findById(id).orElse(null);
     }
 
-    /*public Event getEventByTitle(String title) {
-        return repo.getByTitle(title);
-    }*/
+    public List<Event> getEventsByTitle(String title) {
+        return repo.findByTitle(title);
+    }
 }
