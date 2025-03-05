@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
     templateUrl: './footer.component.html',
     styleUrls: ['./footer.component.css']
 })
-export class FooterComponent {
+export default class FooterComponent {
     constructor() { }
 
     ngOnInit(): void {

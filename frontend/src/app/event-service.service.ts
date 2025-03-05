@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import Event from './event';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EventService {
+export default class EventService {
 
   private eventsUrl: string
 
@@ -15,5 +16,9 @@ export class EventService {
 
   public findAll(): Observable<Event[]> {
     return this.http.get<Event[]>(this.eventsUrl);
+  }
+
+  public save(event: Event) {
+    return this.http.post<Event>(this.eventsUrl, event);
   }
 }

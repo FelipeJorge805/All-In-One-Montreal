@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { EventService } from '../app/event-service.service';
-import { Event } from '../app/event';
+import EventService from '../app/event-service.service';
+import Event from '../app/event';
 
 @Component({
   selector: 'app-list',
@@ -10,7 +10,7 @@ import { Event } from '../app/event';
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.css']
 })
-export class ListingComponent implements OnInit {
+export default class ListingComponent implements OnInit {
   category!: string;
   validCategories = ['parties', 'sports', 'events', 'festivals'];
   events: Event[] = [];

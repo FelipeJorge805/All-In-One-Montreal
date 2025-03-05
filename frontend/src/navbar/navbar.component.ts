@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.css'
   })
-  export class NavbarComponent {
+  export default class NavbarComponent {
     constructor() { }
   
     ngOnInit(): void {
