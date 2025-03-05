@@ -18,3 +18,18 @@
 .card-content {
     padding: 16px;
 }
+
+.creation{
+    margin: 20px;
+    margin-bottom: 0px;
+    padding: 10px;
+    background-color: red;
+    display: inline-block;
+    position: relative;
+}
+
+.creation a{
+    color: black;
+    display: block;
+    text-align: center;
+}
