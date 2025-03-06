@@ -5,25 +5,33 @@ import jakarta.persistence.Id;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Component
 @Scope("prototype")
 @Entity
-public class Event {
+public class Event implements Serializable {
 
     @Id
-    private int sid;
+    private int id;
+
+    private static int sid = 0;
+
+    //@GeneratedValue(strategy = GenerationType.UUID)
+    //private UUID id;
 
     String title;
     String description;
     String location;
-    Date date;
+    LocalDate date;
     String image;
     String url;
 
-    public Event(int id, String title, String description, String location, Date date, String url) {
-        sid = id;
+    public Event(int id, String title, String description, String location, LocalDate date, String url) {
+        sid++;
+        this.id = id;
         this.title = title;
         this.description = description;
         this.location = location;
@@ -32,16 +40,25 @@ public class Event {
         System.out.println("parameter Event constructor");
     }
 
-    public Event() {
-        sid++;
-        System.out.println("empty Event constructor");
+    public Event(Event e) {
+        this.id = sid++;
+        this.title = e.title;
+        this.description = e.description;
+        this.location = e.location;
+        this.date = e.date;
+        this.image = e.image;
+        this.url = e.url;
+        System.out.println("copy Event constructor");
+    }
+    public Event(){
+        this.id = sid++;
     }
 
     @Override
     public String toString() {
         return "Event{" +
-                "id='" + sid + '\'' +
-                "name='" + title + '\'' +
+                "id='" + id + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", location='" + location + '\'' +
                 ", date='" + date + '\'' +
@@ -74,11 +91,11 @@ public class Event {
         this.location = location;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -98,7 +115,7 @@ public class Event {
         this.url = url;
     }
 
-    public int getSid() {
-        return sid;
+    public int getId() {
+        return id;
     }
 }
