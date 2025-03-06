@@ -1,5 +1,5 @@
 export default class Event {
-sid: number;
+id: number;
 title: String;
 description: String;
 location: String;
@@ -7,8 +7,8 @@ date: Date;
 image: String;
 url: String;
 
-    constructor(sid: number, title: String, description: String, location: String, date: Date, image: String, url: String) {
-        this.sid = sid;
+    constructor(id: number, title: String, description: String, location: String, date: Date, image: String, url: String) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.location = location;
