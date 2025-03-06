@@ -19,6 +19,10 @@ export default class EventService {
   }
 
   public save(event: Event) {
-    return this.http.post<Event>(this.eventsUrl, event);
+    //let obj = Object.fromEntries(Object.entries(event));
+    return this.http.post<Event>('http://localhost:8080/submitEvent', event).subscribe({
+      next: response => console.log(response), 
+      error: err => console.log(err)
+    });
   }
 }

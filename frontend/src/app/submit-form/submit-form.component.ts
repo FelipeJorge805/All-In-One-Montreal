@@ -30,7 +30,7 @@ export default class SubmitFormComponent {
 
   onSubmit(): void {
     // Submit logic here
-    this.event = {sid:"0",...this.submitForm.value, image:'', url:'works'};
+    this.event = {id:"0",...this.submitForm.value, image:'', url:''};
     this.eventService.save(this.event);
     console.log('Event submitted:', this.event);
     this.submitForm.reset();
