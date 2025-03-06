@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class BackendApplication {
@@ -19,7 +20,7 @@ public class BackendApplication {
 		e.setTitle("Ice skating");
 		e.setDescription("Have fun with family");
 		e.setLocation("Place des arts");
-		e.setDate(Date.valueOf("2024-12-24"));
+		e.setDate(LocalDate.parse("2024-12-24"));
 		e.setUrl("www.google.com");
 
 		System.out.println(e);

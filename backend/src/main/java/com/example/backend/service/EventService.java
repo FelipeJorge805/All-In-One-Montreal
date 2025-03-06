@@ -22,8 +22,8 @@ public class EventService {
         this.repo = repo;
     }
 
-    public void addEvent(Event e){
-        repo.save(e);
+    public int addEvent(Event e){
+        return repo.save(e);
     }
 
     public List<Event> getAll(){
