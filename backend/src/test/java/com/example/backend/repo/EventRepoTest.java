@@ -1,7 +1,6 @@
 package com.example.backend.repo;
 
 import com.example.backend.model.Event;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,6 @@ class EventRepoTest {
     public void findByIdTest(){
         Event e = repo.getById(2);
 
-        assertTrue(e != null && e.getSid() == 2);
+        assertTrue(e != null && e.getId() == 2);
     }
 }
