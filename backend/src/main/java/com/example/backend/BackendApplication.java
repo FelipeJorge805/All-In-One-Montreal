@@ -27,7 +27,7 @@ public class BackendApplication {
 
 		EventServiceJPA service = context.getBean(EventServiceJPA.class);
 
-		service.addEvent(e);
+		//service.addEvent(e);
 	}
 
 }

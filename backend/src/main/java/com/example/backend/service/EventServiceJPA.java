@@ -5,7 +5,9 @@ import com.example.backend.repo.EventRepo;
 import com.example.backend.repo.EventRepoJPA;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -22,12 +24,15 @@ public class EventServiceJPA {
         this.repo = repo;
     }
 
-    public void addEvent(Event e){
-        repo.save(e);
+    public int addEvent(Event e, MultipartFile image) throws IOException {
+        e.setImageName(image.getOriginalFilename());
+        e.setImageType(image.getContentType());
+        e.setImageData(image.getBytes());
+        return repo.save(e).getId();
     }
 
-    public void deleteEvent(Event e){
-        repo.delete(e);
+    public void deleteEvent(int id){
+        repo.deleteById(id);
     }
 
     public List<Event> getAll(){
@@ -39,6 +44,10 @@ public class EventServiceJPA {
     }
 
     public List<Event> getEventsByTitle(String title) {
-        return repo.findByTitle(title);
+        return repo.findByTitleContaining(title);
+    }
+
+    public Event update(Event e) {
+        return repo.save(e);
     }
 }

@@ -1,7 +1,9 @@
 package com.example.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -15,19 +17,24 @@ import java.util.Date;
 public class Event implements Serializable {
 
     @Id
-    private int id;
+    private final int id;
 
     private static int sid = 0;
 
     //@GeneratedValue(strategy = GenerationType.UUID)
     //private UUID id;
 
-    String title;
-    String description;
-    String location;
-    LocalDate date;
-    String image;
-    String url;
+    private String title;
+    private String description;
+    private String location;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private LocalDate date;
+    private String imageName;
+    private String imageType;
+
+    @Lob
+    private byte[] imageData;
+    private String url;
 
     public Event(int id, String title, String description, String location, LocalDate date, String url) {
         sid++;
@@ -46,7 +53,7 @@ public class Event implements Serializable {
         this.description = e.description;
         this.location = e.location;
         this.date = e.date;
-        this.image = e.image;
+        //this.image = e.image;
         this.url = e.url;
         System.out.println("copy Event constructor");
     }
@@ -62,7 +69,7 @@ public class Event implements Serializable {
                 ", description='" + description + '\'' +
                 ", location='" + location + '\'' +
                 ", date='" + date + '\'' +
-                ", image='" + image + '\'' +
+                //", image='" + image + '\'' +
                 ", url='" + url + '\'' +
                 '}';
     }
@@ -100,11 +107,11 @@ public class Event implements Serializable {
     }
 
     public String getImage() {
-        return image;
+        return "";//image;
     }
 
     public void setImage(String image) {
-        this.image = image;
+        //this.image = image;
     }
 
     public String getUrl() {
@@ -117,5 +124,29 @@ public class Event implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public void setImageType(String imageType) {
+        this.imageType = imageType;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public void setImageData(byte[] imageData) {
+        this.imageData = imageData;
     }
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface EventRepoJPA extends JpaRepository<Event, Integer> {
 
-    List<Event> findByTitle(String title);
+    List<Event> findByTitleContaining(String title);
 }
