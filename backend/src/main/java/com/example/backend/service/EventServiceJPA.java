@@ -47,7 +47,10 @@ public class EventServiceJPA {
         return repo.findByTitleContaining(title);
     }
 
-    public Event update(Event e) {
+    public Event updateEvent(Event e, MultipartFile image) throws IOException {
+        e.setImageName(image.getOriginalFilename());
+        e.setImageType(image.getContentType());
+        e.setImageData(image.getBytes());
         return repo.save(e);
     }
 }
