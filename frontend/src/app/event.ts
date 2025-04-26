@@ -16,4 +16,8 @@ url: String;
         this.image = image;
         this.url = url;
     }
+
+    setImage(image: String) {
+        this.image = image;
+    }
 }
